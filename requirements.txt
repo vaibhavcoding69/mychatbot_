@@ -98,7 +98,7 @@ pypdf==5.1.0
 python-dateutil==2.7.5
 python-gemini-api==2.4.12
 pytz==2024.2
-PyYAML @ https://github.com/pyyaml/pyyaml
+PyYAML @ https://github.com/yaml/pyyaml
 regex==2024.11.6
 requests==2.32.3
 rich==13.9.4
