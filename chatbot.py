@@ -4,7 +4,7 @@ API_KEY = "AIzaSyBfB2H8PXphoHntpYlJKsRihZLXLXNuMIM"
 
 ai.configure(api_key=API_KEY)
 
-model = ai.GenerativeModel("gemini-pro")
+model = ai.GenerativeModel("gemini-1.5-flash-8b")
 chat = model.start_chat()
 
 def process_user_input(user_input):
