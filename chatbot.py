@@ -1,7 +1,6 @@
 import google.generativeai as ai
-import os
 
-API_KEY = os.getenv("API_KEY")
+API_KEY = "AIzaSyBfB2H8PXphoHntpYlJKsRihZLXLXNuMIM"
 
 ai.configure(api_key=API_KEY)
 
