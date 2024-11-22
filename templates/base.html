@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
@@ -9,17 +11,20 @@
             background-color: #15557a;
             margin: 0;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         body::-webkit-scrollbar {
-            width: 12px;               /* width of the entire scrollbar */
+            width: 12px;
         }
         body::-webkit-scrollbar-track {
-            background: #15557a;        /* color of the tracking area */
+            background: #15557a;
         }
         body::-webkit-scrollbar-thumb {
-            background-color: #ffffff;    /* color of the scroll thumb */
-            border-radius: 20px;       /* roundness of the scroll thumb */
-            border: 3px solid #15557a;  /* creates padding around scroll thumb */
+            background-color: #ffffff;
+            border-radius: 20px;
+            border: 3px solid #15557a;
         }
         h1 {
             text-align: center;
@@ -28,40 +33,48 @@
             background-color: #0b62db;
             color: rgb(0, 0, 0);
             font-size: 90px;
-            border: 2px solid #000000
+            border: 2px solid #000000;
+        }
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            max-width: 800px;
+            margin: 20px auto;
         }
         form {
-            margin-top: 20px;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
         #chat-log {
-            margin-top: 20px;
+            flex-grow: 1;
             padding: 10px;
             border: 3px solid #000000;
             border-radius: 50px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
             background-color: white;
             font-size: 18px;
+            max-height: 600px;
             overflow-y: scroll;
-            height: 500px;
-        }
-        #chat-log:-scrollbar {
-            width: 12px;               /* width of the entire scrollbar */
-        }
-        #chat-log:-scrollbar-track {
-            background: #ffffff;        /* color of the tracking area */
-        }
-        #chat-log:-scrollbar-thumb {
-            background-color: #31d6f7;    /* color of the scroll thumb */
-            border-radius: 20px;       /* roundness of the scroll thumb */
-            border: 3px solid #ffffff;  /* creates padding around scroll thumb */
+            margin-bottom: 20px;
         }
         #chat-log p {
             margin: 0;
             padding: 10px;
             border-bottom: 1px solid #ffffff;
+        }
+        #chat-log::-webkit-scrollbar {
+            width: 10px;
+            line-height: 50px;
+            background-attachment: #15557a;
+        }
+        #chat-log::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+        #chat-log::-webkit-scrollbar-thumb {
+            background-color: #15557a;
+            border-radius: 20px;
+            border: 3px solid #ffffff;
         }
         #button {
             border-radius: 50px;
@@ -70,27 +83,53 @@
             color: white;
             font-size: 16px;
             cursor: pointer;
-            border: 2px;
-            border-color: #ffffff;
+            border: 2px solid #ffffff;
+            margin-left: 10px;
         }
         #text-input {
-            width: 300px;
+            flex-grow: 1;
             padding: 10px;
             border-radius: 30px;
-            margin-top: 10px;
             font-size: 16px;
+            border: 1px solid #000000;
             background-color: #ffffff;
         }
         #credits {
-            margin-top: 100px;
+            margin-top: auto;
             font-size: 14px;
             text-align: center;
-            width: 100%;
-            height: 300px;
             background-color: #000000;
             color: #8d8d8d;
-            font: monospace;
             border: 5px solid #ffffff;
+            padding: 20px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 50px;
+                padding: 5px;
+            }
+            .chat-container {
+                max-width: 100%;
+                margin: 10px;
+            }
+            #chat-log {
+                font-size: 16px;
+                border-radius: 20px;
+            }
+            #button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            #text-input {
+                padding: 8px;
+                font-size: 14px;
+            }
+            #credits {
+                font-size: 12px;
+                padding: 10px;
+            }
         }
     </style>
     <script>
@@ -116,20 +155,20 @@
 </head>
 <body>
     <h1><strong>Chatbot</strong></h1>
-    <form method="POST">
-        <input type="text" name="user_input" placeholder="Type your prompt..." id="text-input">
-        <input type="submit" value="Send" id="button">
-    </form>
-    <div id="chat-log">
-        <!-- Chat messages will be appended here -->
+    <div class="chat-container">
+        <div id="chat-log">
+            <!-- Chat messages will be appended here -->
+        </div>
+        <form method="POST">
+            <input type="text" name="user_input" placeholder="Type your prompt..." id="text-input">
+            <input type="submit" value="Send" id="button">
+        </form>
     </div>
     <div id="credits">
-        <br>
         <p style="text-align: center; font-family: monospace; font-size: 14px; text-decoration: underline;">Created by <strong>Vaibhav</strong> for a specific project.</p>
-        <br>
         <p style="text-align: left; font-family: monospace; font-size: 14px;">Powered by <strong>Node.js</strong> and <strong>Express.js</strong>.</p>
         <p style="text-align: left; font-family: monospace; font-size: 14px;">Supported by <strong>Gemini</strong>.</p>
-        <p style="text-align: left; font-family: monospace; font-size: 14px;"> Contact me: <a href="vaibhavsharma42011@gmail.com" title="mail">Gmail</a></p>
+        <p style="text-align: left; font-family: monospace; font-size: 14px;"> Contact me: <a href="mailto:vaibhavsharma42011@gmail.com" title="mail">Gmail</a></p>
     </div>
 </body>
 </html>
