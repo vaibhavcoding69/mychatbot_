@@ -1,6 +1,6 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_from_directory
 from chatbot import process_user_input
-
+import os
 
 app = Flask(__name__)
 
@@ -26,6 +26,12 @@ def chatbot():
     # Render the HTML template for the chatbot interface
     return render_template('base.html')
 
+@app.route('/ads.txt')
+def ads_txt():
+    """
+    Serve the ads.txt file.
+    """
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'ads.txt')
 
 if __name__ == '__main__':
     app.run(debug=True)
